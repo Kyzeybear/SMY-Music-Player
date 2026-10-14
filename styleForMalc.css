@@ -1,0 +1,472 @@
+#glueLyricsTitle{
+    position: relative;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+#author1 {
+    position: relative;
+   font-family: "Raleway", sans-serif;
+    font-size: 53px;
+    left: 505px;
+    bottom: 320px;
+    color: rgb(252, 253, 253);
+}
+
+#recommendedArtist {
+    position: absolute;
+    transform: scale(0.75);
+   font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    left: 1250px;
+    bottom: -80px;
+    color: rgb(252, 253, 253);
+    z-index: 99;
+}
+
+#author2 {
+    position: relative;
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 13px;
+    left: 655px;
+    bottom: 340px;
+    color: rgb(155, 155, 155);
+}
+
+#author3 {
+    position: absolute;
+   font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    left: 655px;
+    bottom: 1580px;
+    color: rgb(252, 253, 253);
+}
+
+#author4 {
+    position: absolute;
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 13px;
+    left: 605px;
+    bottom: 1551px;
+    color: rgb(155, 155, 155);
+}
+
+.hoverBoxJacob{
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(rgba(214, 87, 49, 0.562),rgba(34, 22, 18, 0.247));
+    border: 1px solid rgb(252, 252, 252);
+    position: relative;
+    bottom: 1112px;
+   left: 450px;
+   display: none;
+}
+.hoverBoxIain{
+    width: 400px;
+    height: 200px;
+   background: linear-gradient(rgba(214, 87, 49, 0.562),rgba(34, 22, 18, 0.247));
+    border: 1px solid rgb(252, 252, 252);
+    position: absolute;
+    bottom: 1112px;
+   left: 650px;
+   display:none
+}
+
+
+#author7 {
+    position: absolute;
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 13px;
+    left: 705px;
+    bottom: 1551px;
+    color: rgb(155, 155, 155);
+}
+
+#glueLyrics {
+position: relative;
+   
+    margin-left: 400px;
+    font-size: 20px;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  color: rgb(250, 249, 249);
+  
+  
+}
+
+
+
+.colorBox {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    margin: 0;
+   background: linear-gradient(rgb(0, 7, 7),rgba(21, 39, 16, 0.836));
+    box-shadow: 1px 1px 30px 2px;
+    z-index: 1px;
+    background-image: url(images/malcThumb2.jpg);;
+    overflow: hidden;
+    background-size: cover;
+    filter: blur(10px);
+}
+
+
+.topWrapped {
+position: relative;
+left: 700px;
+top: 500px;
+z-index: 999;
+}
+
+.ColorBoxWImage img {
+    display: none;
+}
+
+
+#beaMusicPicture {
+    position: relative;
+    z-index: 999px;
+
+}
+
+#beaMusicPicture {
+    position: relative;
+    height: 400px;
+    width: 400px;
+    left: 180px;
+    top: 70px;
+}
+.songs4You {
+  display: flex;
+  flex-direction:row;        
+  gap: 20px;                    
+  
+  position: absolute;
+  left: 1293px;
+  top: 990px;
+  z-index: 999;
+}
+
+.songs4You img {
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  position: static;
+}
+.songs4You :nth-child(3) {
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  position: relative;
+  top: 150px;
+   right: 240px;
+}
+.songs4You :nth-child(4) {
+  height: 100px;
+  width: 100px;
+  border-radius: 20px;
+  position: relative;
+  top: 150px;
+  right: 240px;
+}
+
+.player {
+    position: fixed;
+    width: 100%;
+    top: 825px;
+  
+   
+}
+
+/*.player audio {
+    width: 100%;
+    outline: none;
+
+   
+}
+
+audio::-webkit-media-controls-panel {
+background:whitesmoke;
+position: relative;
+
+}
+
+audio::-webkit-media-controls-play-button {
+background-color:rgba(68, 245, 112, 0.904);
+border-radius: 100px;
+position: relative;
+bottom: 1px;
+left: 900px;
+
+}
+
+audio::-webkit-media-controls-current-time-display {
+color: rgb(37, 146, 34);
+border-radius: 100px;
+position: relative;
+top: 20px;
+left: 765px;
+
+
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+color: rgb(37, 146, 34);
+border-radius: 100px;
+position: relative;
+top: 20px;
+left: 965px;
+
+}
+
+audio::-webkit-media-controls-timeline {
+position: relative;
+bottom:22px;
+}
+*/
+#progressBar {
+    position: absolute;
+    bottom: 30px;
+    left: 1210px;
+    -webkit-appearance: none;
+    width: 20%;
+    height: 2px;
+    background-color: rgb(126, 128, 124);
+    cursor: pointer;
+    margin: 4;
+    z-index: 99;
+}
+    
+
+#progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: rgb(253, 253, 253);
+    width: 15;
+    height: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px black;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls div {
+width: 60px;
+height: 60px;
+margin: 20px;
+background: #fff;
+display: inline-flex;
+position: fixed;
+bottom: 100px;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+color: rgb(32, 46, 19);
+box-shadow: 0 10px 20px black;
+cursor: pointer;
+}
+
+.controls div:nth-child(1) {
+    transform: scale(0.60);
+    position: absolute;
+    left: 1350px;
+    top: 845px;
+    border:1px solid;
+    bottom: -15px;
+    background-color: rgb(238, 238, 237);
+    z-index: 99;
+}
+
+
+.colorBox2 {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    bottom: 1px;
+    margin: 0;
+   background: linear-gradient(rgb(0, 5, 1),rgba(0, 0, 0, 0.836));
+   filter: blur(50px);
+    
+    
+    z-index: 1px;
+}
+
+body {
+    background: linear-gradient(rgb(0, 5, 1),rgba(0, 0, 0, 0.836));
+    
+}
+
+.hoverBoxBea {
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(rgba(214, 87, 49, 0.562),rgba(34, 22, 18, 0.247));
+    border: 1px solid rgb(252, 252, 252);
+    position: absolute;
+    bottom: 1436px;
+   left: 600px;
+   display: none;
+}
+
+.boxElements {
+position: relative;
+bottom:1260px;
+left:610px;
+display: none;
+
+}
+
+.boxElements pre {
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    bottom: -290px;
+    left: 230px;
+    font-size: 13px;
+    color: #050505;
+   
+    
+}
+
+#author6{
+     position: relative;
+   font-family: "Raleway", sans-serif;
+   font-size: 20px;
+  bottom: -170px;
+  left: 285px;
+
+}
+
+.boxElements img {
+    position: absolute;
+    bottom: -180px;
+    left:210px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    rotate: 10deg;
+}
+.MalcInfo{
+    position:absolute;
+    bottom:490px;
+    left: -200px;
+}
+.JacobInfo {
+    position:absolute;
+    bottom:250px;
+    left: -200px;
+}
+
+.IainInfo {
+    position:absolute;
+    bottom:247px;
+    left: 70px;
+
+}
+
+.boxElementsJacob {
+position: relative;
+bottom:1140px;
+left:438px;
+display:none;
+
+}
+
+.boxElementsJacob pre {
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    font-size: 13px;
+    
+}
+
+.boxElementsJacob img {
+    position: absolute;
+    bottom: 80px;
+    left:20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    rotate: 10deg;
+}
+
+#author6Jacob{
+     position: relative;
+   font-family: "Raleway", sans-serif;
+  bottom: 70px;
+  left: 85px;
+ 
+
+}
+
+.boxElementsIain {
+position: relative;
+bottom:1150px;
+left:636px;
+display:none;
+
+}
+
+.boxElementsIain pre {
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    font-size: 13px;
+    
+}
+
+.boxElementsIain img {
+    position: absolute;
+    bottom: 80px;
+    left:20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    rotate: 10deg;
+}
+
+#author6Iain{
+     position: relative;
+   font-family: "Raleway", sans-serif;
+  bottom: 70px;
+  left: 85px;
+ 
+
+}
+
+.lyricsWrapped {
+  align-items: center;
+    justify-self: center;
+    position: relative;
+    right:500px
+    
+}
+.lyrics {
+    position: relative;
+    text-align: left;
+    color: white;
+    white-space: pre-line;
+    font-family:"Raleway", sans-serif;
+    font-size: 20px;
+    left: 100px;
+}
+
+.lyrics:hover {
+    position: relative;
+ background: linear-gradient(rgba(214, 87, 49, 0.562),rgba(34, 22, 18, 0.247));
+}
+.sideBox {
+    position: absolute;
+    bottom: -350px;
+    height: 700px;
+    width: 700px;
+    left: 1050px;
+  
+    margin: 0;
+   background: linear-gradient(rgba(0, 7, 7, 0.562),rgba(63, 24, 18, 0.247));
+    box-shadow: 1px 1px 30px 2px;
+    z-index: -30px;
+    
+}
