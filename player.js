@@ -3,100 +3,117 @@ let BeabadoobeePylonAlbum = [
 {
 title:"Pylon",
 artist: "Beabadoobee",
+src: "images/PylonAudio.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"Sun Has Set",
+artist: "Beabadoobee",
+src: "images/sunHasSetBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"Estranged",
+artist: "Beabadoobee",
+src: "images/estrangedBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"SwitchBlade",
+artist: "Beabadoobee",
+src: "switchBladeBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"Write Me A Letter",
+artist: "Beabadoobee",
+src: "images/WriteMeAlLetterBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"It's Alright",
+artist: "Beabadoobee",
+src: "images/itsAlrightBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+{
+title:"In Motion",
+artist: "Beabadoobee",
+src: "images/inMotionBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+
+{
+title:"Memories",
+artist: "Beabadoobee",
 src: "images/MemoriesBea.mp3",
 srcImg: "images/pylonAlbumCover.jpg",
 },
 
 {
-title:"Nice To Each Other",
-artist: "Olivia Dean",
-src: "images/niceToEachOtherDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
+title:"Nothing to Prove",
+artist: "Beabadoobee",
+src: "images/nothingToProveBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
 },
 {
-title:"Lady Lady",
-artist: "Olivia Dean",
-src: "images/ladyLadyDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-
-{
-title:"Close Up",
-artist: "Olivia Dean",
-src: "images/closeUpDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
+title:"Radio",
+artist: "Beabadoobee",
+src: "images/radioBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
 },
 
 {
-title:"So Easy (To Fall In Love)",
-artist: "Olivia Dean",
-src: "images/soEasyDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-{
-title:"Let Alone The One You Love",
-artist: "Olivia Dean",
-src: "images/letAloneDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
+title:"Powerlines",
+artist: "Beabadoobee",
+src: "images/powerLinesBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
 },
 
 {
-title:"Man I Need",
-artist: "Olivia Dean",
-src: "images/manINeedDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
+title:"Spark",
+artist: "Beabadoobee",
+src: "images/sparkBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
+},
+{
+title:"Despite That",
+artist: "Beabadoobee",
+src: "images/despiteThatBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
 },
 
 {
-title:"Something Inbetween",
-artist: "Olivia Dean",
-src: "images/somethingInBetweenDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-{
-title:"Loud",
-artist: "Olivia Dean",
-src: "images/loudDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-
-{
-title:"Baby Steps",
-artist: "Olivia Dean",
-src: "images/babyStepsDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-
-{
-title:"A couple Minutes",
-artist: "Olivia Dean",
-src: "images/aCoupleMinutesDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
-},
-{
-title:"I've Seen It",
-artist: "Olivia Dean",
-src: "images/iveSeenItDean.mp3",
-srcImg: "images/theArtofLoving_Dean.jpg",
+title:"Satellite",
+artist: "Beabadoobee",
+src: "images/satelliteBea.mp3",
+srcImg: "images/pylonAlbumCover.jpg",
 },
 
 ]
-
+let i = 0 
 document.addEventListener('click',(e)=>{
     let topPlaybutton = e.target.closest('#playButtonTop') 
     if (!topPlaybutton) return;
     oliviaDeanPlaylist = BeabadoobeePylonAlbum
+    i=0
     playSong()
     songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
     imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[i].srcImg})`
+    playPauseButton2.innerHTML = "❚❚";
 })
 
-let i = 0 
 let currentTrack = new Audio();
 function playSong() {
     if (i>=oliviaDeanPlaylist.length) {
         i=0
     }
+    oliviaDeanPlaylist = BeabadoobeePylonAlbum
     currentTrack.src = oliviaDeanPlaylist[i].src;
     currentTrack.play()
 
@@ -117,7 +134,9 @@ progress.onchange = ()=>{
 
 forwardButton.addEventListener('click', ()=>{
       i = i+1;
+      oliviaDeanPlaylist = BeabadoobeePylonAlbum
         currentTrack.src = oliviaDeanPlaylist[i].src;
+        songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
         if (i<oliviaDeanPlaylist.length){
     currentTrack.play();   
         }
@@ -128,7 +147,9 @@ forwardButton.addEventListener('click', ()=>{
 
 backwardsButton.addEventListener('click', ()=>{
       i = i-1;
+      oliviaDeanPlaylist = BeabadoobeePylonAlbum
         currentTrack.src = oliviaDeanPlaylist[i].src;
+        songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
         if (i<oliviaDeanPlaylist.length){
     currentTrack.play(); 
         }
@@ -160,3 +181,13 @@ progress.max =currentTrack.duration
 },500)
 
 
+currentTrack.addEventListener('ended', ()=>{
+        i = i+1;
+        currentTrack.src = oliviaDeanPlaylist[i].src;
+        if (i<oliviaDeanPlaylist.length){
+    currentTrack.play();
+        }
+        else {
+            i=0
+        }
+});
