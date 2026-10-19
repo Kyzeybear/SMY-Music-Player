@@ -96,25 +96,25 @@ srcImg: "images/pylonAlbumCover.jpg",
 },
 
 ]
-let i = 0 
+let a = 0 
 document.addEventListener('click',(e)=>{
     let topPlaybutton = e.target.closest('#playButtonTop') 
     if (!topPlaybutton) return;
     oliviaDeanPlaylist = BeabadoobeePylonAlbum
-    i=0
+    a=0
     playSong()
-    songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
-    imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[i].srcImg})`
+    songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
+    imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[a].srcImg})`
     playPauseButton2.innerHTML = "❚❚";
 })
 
 let currentTrack = new Audio();
 function playSong() {
-    if (i>=oliviaDeanPlaylist.length) {
-        i=0
+    if (a>=oliviaDeanPlaylist.length) {
+        a=0
     }
     oliviaDeanPlaylist = BeabadoobeePylonAlbum
-    currentTrack.src = oliviaDeanPlaylist[i].src;
+    currentTrack.src = oliviaDeanPlaylist[a].src;
     currentTrack.play()
 
 }
@@ -129,32 +129,32 @@ let imgSrc = document.querySelector('.srcImg');
 
 progress.onchange = ()=>{
    currentTrack.currentTime=progress.value;
-   songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
+   songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
 }
 
 forwardButton.addEventListener('click', ()=>{
-      i = i+1;
+      a = a+1;
       oliviaDeanPlaylist = BeabadoobeePylonAlbum
-        currentTrack.src = oliviaDeanPlaylist[i].src;
-        songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
-        if (i<oliviaDeanPlaylist.length){
+        currentTrack.src = oliviaDeanPlaylist[a].src;
+        songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
+        if (a<oliviaDeanPlaylist.length){
     currentTrack.play();   
         }
         else {
-            i=11;
+            a=11;
         }
 })
 
 backwardsButton.addEventListener('click', ()=>{
-      i = i-1;
+      a = a-1;
       oliviaDeanPlaylist = BeabadoobeePylonAlbum
-        currentTrack.src = oliviaDeanPlaylist[i].src;
-        songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
-        if (i<oliviaDeanPlaylist.length){
+        currentTrack.src = oliviaDeanPlaylist[a].src;
+        songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
+        if (a<oliviaDeanPlaylist.length){
     currentTrack.play(); 
         }
-        else if (i>=oliviaDeanPlaylist.length){
-            i=11;
+        else if (a>=oliviaDeanPlaylist.length){
+            a=11;
         }
 })
 let curentTime = 0;
@@ -166,7 +166,7 @@ if (!currentTrack.paused){
      return curentTime
 }
 else {
-    currentTrack.src = oliviaDeanPlaylist[i].src;
+    currentTrack.src = oliviaDeanPlaylist[a].src;
     currentTrack.currentTime = curentTime
     playPauseButton2.innerHTML = "❚❚"
     currentTrack.play()
@@ -182,12 +182,13 @@ progress.max =currentTrack.duration
 
 
 currentTrack.addEventListener('ended', ()=>{
-        i = i+1;
-        currentTrack.src = oliviaDeanPlaylist[i].src;
-        if (i<oliviaDeanPlaylist.length){
+        a = a+1;
+        currentTrack.src = oliviaDeanPlaylist[a].src;
+        if (a<oliviaDeanPlaylist.length){
     currentTrack.play();
+    songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
         }
         else {
-            i=0
+            a=0
         }
 });
