@@ -97,6 +97,7 @@ currentTrack.addEventListener('ended', ()=>{
         currentTrack.src = oliviaDeanPlaylist[i].src;
         if (i<oliviaDeanPlaylist.length){
     currentTrack.play();
+    songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
     clickBoxes.children[i].style.background = "linear-gradient(rgba(250, 246, 246, 0.4),rgba(43, 20, 20, 0.06))";
         }
         else {
@@ -120,7 +121,6 @@ progress.max =currentTrack.duration
 
 progress.onchange = ()=>{
    currentTrack.currentTime=progress.value;
-   songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
 }
 
 forwardButton.addEventListener('click', ()=>{
@@ -129,6 +129,7 @@ forwardButton.addEventListener('click', ()=>{
         currentTrack.src = oliviaDeanPlaylist[i].src;
         if (i<oliviaDeanPlaylist.length){
     currentTrack.play();
+    songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
     clickBoxes.children[i].style.background = thickBoxBackgroundColor;    
         }
         else {
@@ -141,7 +142,8 @@ backwardsButton.addEventListener('click', ()=>{
       i = i-1;
         currentTrack.src = oliviaDeanPlaylist[i].src;
         if (i<oliviaDeanPlaylist.length){
-    currentTrack.play();
+            songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
+            currentTrack.play();
     clickBoxes.children[i].style.background = thickBoxBackgroundColor;    
         }
         else if (i>=oliviaDeanPlaylist.length){

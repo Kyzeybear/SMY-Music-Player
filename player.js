@@ -129,12 +129,10 @@ let imgSrc = document.querySelector('.srcImg');
 
 progress.onchange = ()=>{
    currentTrack.currentTime=progress.value;
-   songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
 }
-
+oliviaDeanPlaylist = BeabadoobeePylonAlbum
 forwardButton.addEventListener('click', ()=>{
       a = a+1;
-      oliviaDeanPlaylist = BeabadoobeePylonAlbum
         currentTrack.src = oliviaDeanPlaylist[a].src;
         songTitle.innerHTML = oliviaDeanPlaylist[a].artist+"-"+oliviaDeanPlaylist[a].title;
         if (a<oliviaDeanPlaylist.length){
