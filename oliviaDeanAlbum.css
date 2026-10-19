@@ -31,8 +31,7 @@ box-shadow: -10px 10px 30px 1px rgba(255, 255, 255, 0.171);
     transform: translateY(120px);
 }
 
-.albumTitle {
-}
+
 .albumTitle h1 {
     position: absolute;
     color: white;

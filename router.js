@@ -1,39 +1,59 @@
 let viewBox = document.getElementById('view')
-const initialHomepageHtml = viewBox.innerHTML;
 let topBox = document.querySelector('.fixedTopWrapped')
 let ablbumPageLoaded = false
-history.replaceState({pageHtml: initialHomepageHtml, isAlbumPage: false}, "", "")
+history.replaceState({ pageName: 'home', isAlbumPage: false }, "", "")
+
+const routeMap = new Map()
+routeMap.set('home', document.createElement('div'))
+let currentPage = 'home'
+
+function showPage (pageName, html){
+    let currentPageContainer = routeMap.get(currentPage)
+    currentPageContainer.replaceChildren(...viewBox.childNodes)
+
+    let targetPageContainer = routeMap.get(pageName)
+    let firstRoute = !targetPageContainer
+    if(firstRoute){
+        targetPageContainer  = document.createElement('div')
+        targetPageContainer.innerHTML = html
+        routeMap.set(pageName,targetPageContainer)
+    }
+    viewBox.replaceChildren(...targetPageContainer.childNodes)
+    currentPage = pageName
+    return firstRoute
+}
+
+
+
+let albumScriptLoaded = false;
+
+
 
 function loadAlbumScript() {
-    const oldScript = document.getElementById('olivia-dean-script');
-    if (oldScript) {
-        oldScript.remove();
-    }
+    if (albumScriptLoaded) return;
 
-    let script = document.createElement('script');
+    const script = document.createElement('script');
     script.id = 'olivia-dean-script';
     script.src = 'oliviaDeanAlbum.js';
+    script.onload = () => {
+        albumScriptLoaded = true;
+        window.initOliviaDeanAlbum();
+    };
+    script.onerror = () => {
+        albumScriptLoaded = false;
+        script.remove();
+        console.error('Could not load oliviaDeanAlbum.js');
+    };
     document.body.appendChild(script);
 }
 
-function renderHome() {
-  viewBox.innerHTML = initialHomepageHtml;
-  ablbumPageLoaded = false;
-
-  const oldScript = document.getElementById('olivia-dean-script');
-  if (oldScript) oldScript.remove();
-
-  history.replaceState({ pageHtml: initialHomepageHtml, isAlbumPage: false }, "", "");
-}
-
-
 function albumRender(html){
-    viewBox.innerHTML = html; 
-        loadAlbumScript()
-        ablbumPageLoaded = true
-         history.pushState({ pageHtml: html, isAlbumPage: true}, "", "#the-art-of-loving")
-        window.scrollTo(0,0)
-        viewBox.style.display = 'flex';
+    const isNewAlbumPage = showPage('album', html);
+    if (isNewAlbumPage) loadAlbumScript();
+    ablbumPageLoaded = true;
+    history.pushState({ pageName: 'album', isAlbumPage: true }, "", "#the-art-of-loving");
+    window.scrollTo(0, 0);
+    viewBox.style.display = 'flex';
 }
 
 document.addEventListener('click',(e)=>{
@@ -50,24 +70,24 @@ const deanImage = e.target.closest('#oliviaDeanAlbumPage')
 
     
 })
+document.addEventListener('click', (e)=>{
+const headerTag = e.target.closest('#smy1')
+
+if(!headerTag) return;
+
+ablbumPageLoaded = false
+e.preventDefault()
+history.pushState({ pageName: 'home', isAlbumPage: false }, "", "#/")
+showPage('home')
+
+
+})
+
 
 window.addEventListener('popstate', e=>{
-if(e.state && e.state.pageHtml){
-     viewBox.innerHTML = e.state.pageHtml
-    if(e.state.isAlbumPage){
-        loadAlbumScript() 
-        ablbumPageLoaded = true 
-    }
-        else {
-        const oldScript = document.getElementById('olivia-dean-script')
-        if (oldScript) oldScript.remove()
-        ablbumPageLoaded = false  
-     let script = document.createElement('script');
-    script.id = 'style2';
-    script.src = 'style2.js';
-    document.body.appendChild(script);
-
-        }
-    }
-
+    if (!e.state?.pageName) return;
+    console.log(e.state.pageName)
+    showPage(e.state.pageName); 
+    ablbumPageLoaded = e.state.isAlbumPage;
+    
 })

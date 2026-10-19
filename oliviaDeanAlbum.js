@@ -1,4 +1,3 @@
-
 (function () {
 
 let oliviaDeanPlaylist = [
@@ -86,9 +85,10 @@ srcImg: "images/theArtofLoving_Dean.jpg",
 ]
 let playButton = document.querySelector('.playButton');
 let i=0;
-let currentTrack = new Audio();
 playButton.addEventListener('click', ()=>{
 playSong()
+imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[i].srcImg})`
+songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
 })
 
 currentTrack.addEventListener('ended', ()=>{
@@ -113,17 +113,9 @@ function playSong() {
 
 }
 
-let progress = document.querySelector('.progressBar');
-let songTitle = document.getElementById('songNameMedia');
-let forwardButton = document.querySelector('.forwardButton');
-let backwardsButton = document.querySelector('.backButton');
-let playPauseButton2 = document.querySelector('.playButton2');
-let imgSrc = document.querySelector('.srcImg');
 setInterval (()=>{
 progress.value=currentTrack.currentTime
 progress.max =currentTrack.duration
-songTitle.innerHTML = oliviaDeanPlaylist[i].artist+"-"+oliviaDeanPlaylist[i].title;
-imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[i].srcImg})`
 },500)
 
 progress.onchange = ()=>{
@@ -157,21 +149,6 @@ backwardsButton.addEventListener('click', ()=>{
         }
 })
 let curentTime = 0;
-playPauseButton2.addEventListener('click', ()=>{
-if (!currentTrack.paused){
-    currentTrack.pause();
-     curentTime=currentTrack.currentTime
-     playPauseButton2.innerHTML = "▶︎"
-     return curentTime
-}
-else {
-    currentTrack.src = oliviaDeanPlaylist[i].src;
-    currentTrack.currentTime = curentTime
-    playPauseButton2.innerHTML = "❚❚"
-    currentTrack.play()
-
-}
-})
 
 
 
@@ -200,6 +177,11 @@ expandButon.addEventListener('click', ()=>{
 
 
 let clickBoxes = document.querySelector('.thickHoverDisplayWrapped');
+clickBoxes.addEventListener('click', ()=> {
+    imgSrc.style.backgroundImage = `url(${oliviaDeanPlaylist[i].srcImg})`
+})
+
+
 clickBoxes.children[0].addEventListener ('click', ()=>{
     clickBoxes.children[i].style.background = "linear-gradient(rgba(136, 22, 22, 0),rgba(43, 20, 20, 0))";
     if (i!=0)
@@ -344,4 +326,17 @@ art1.innerHTML = dura
 })
 
 
+
+function isPlaying (){
+let playingState = false
+clickBoxes.addEventListener('click', () => {
+playingState = true;
+})
+globalThis.isPlayingCheck = function(){
+    return playingState;
+}
+}
+isPlaying()
+
 })();
+
