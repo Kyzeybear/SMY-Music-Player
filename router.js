@@ -21,6 +21,8 @@ function showPage (pageName, html){
     viewBox.replaceChildren(...targetPageContainer.childNodes)
     currentPage = pageName
     return firstRoute
+
+
 }
 
 
@@ -81,6 +83,13 @@ history.pushState({ pageName: 'home', isAlbumPage: false }, "", "#/")
 showPage('home')
 
 
+document.addEventListener('click',()=>{
+    if (ablbumPageLoaded){
+        oliviaDeanPlaylist = oliviaDeanAlbum
+    }
+    oliviaDeanPlaylist = BeabadoobeePylonAlbum
+})
+
 })
 
 
@@ -91,3 +100,4 @@ window.addEventListener('popstate', e=>{
     ablbumPageLoaded = e.state.isAlbumPage;
     
 })
+

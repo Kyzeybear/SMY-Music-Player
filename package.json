@@ -1,0 +1,25 @@
+{
+  "name": "vs-html-website",
+  "version": "1.0.0",
+  "description": "Right now, I am mainly focusing on code within the index.html, router.js, and oliviaDeanAlbum.js files. Other code files make sense, but are not my main focus as of 9/29/26.",
+  "main": "oliviaAlbum.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyzeybear/SMY-Music-Player.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kyzeybear/SMY-Music-Player/issues"
+  },
+  "homepage": "https://github.com/Kyzeybear/SMY-Music-Player#readme",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "mysql2": "^3.24.6"
+  }
+}

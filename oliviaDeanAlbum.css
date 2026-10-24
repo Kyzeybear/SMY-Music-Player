@@ -6,7 +6,15 @@ body {
     flex-wrap: wrap;
     align-content: space-evenly;
     background-color: rgb(7, 7, 7);
+    margin-top: 100px;
+    margin-left:100px;
+    overflow-x: hidden;
 }
+.everythingButFixed {
+    transform: translateX(100px) scale(0.9) translateY(-50px);
+}
+
+
 
 body::before {
     content:"";
@@ -23,9 +31,10 @@ body::before {
 .topImg img {
 height: 300px;
 width: 300px;
-border-radius: 40px;
+transform: scale(1.5);
+margin-top: 100px;
+border-radius: 15px;
 margin-bottom: 100px;
-box-shadow: -10px 10px 30px 1px rgba(255, 255, 255, 0.171);
 }
 .topImg {
     transform: translateY(120px);
@@ -35,11 +44,17 @@ box-shadow: -10px 10px 30px 1px rgba(255, 255, 255, 0.171);
 .albumTitle h1 {
     position: absolute;
     color: white;
-    font-family: sans-serif;
-    font-size: 40px;
-    font-family: 'Trebuchet MS', sans-serif;
-    transform: translateX(330px) translateY(-270px);
+    font-size: 50px;
+    font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+    transform: translateX(330px) translateY(-290px);
    
+}
+.albumArtistTitle{
+      font-family: "Outfit", sans-serif;
+      font-size: 14px;
+  
 }
 
 .list {
@@ -56,7 +71,7 @@ display: flex;
 flex-direction: column;
 gap:0px;
 flex-wrap: wrap;
-  margin-top: -1209px;
+  margin-top: -1219px;
    position: relative; 
   z-index: 999;
 }
@@ -67,7 +82,7 @@ flex-wrap: wrap;
   border-radius: 10px;
     margin-bottom: 10px;
   height: 80px;
-  width: 1130px; 
+  width: 110vw; 
 }
 
 .thickHoverDisplay:hover {
@@ -86,6 +101,9 @@ flex-wrap: wrap;
      top: 00px;
      
 }
+.top{
+    transform: translateX(100px);
+}
 
 .topBox {
     position: relative;
@@ -101,7 +119,9 @@ flex-wrap: wrap;
 }
 
 
- 
+ .listTimeWrapped{
+    transform: translateX(800px) translateY(-150px);
+ }
 
 .timeList {
       transform: translateY(-160px) translateX(800px);
@@ -117,8 +137,10 @@ flex-wrap: wrap;
     margin-top: -14vh;
     list-style-type:none;
 }
-
+.albumText{
+   margin-left: 100px;
+}
 
 .allList{
-    transform: translateY(160px);
+    transform: translateY(260px);
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fileUploads.css">
+    <title>Upload an Album</title>
+</head>
+<body>
+  <main class="upload">
+    <form id="album-upload-form">
+      <label>Album title
+        <input type="text" name="albumTitle" required maxlength="150">
+      </label>
+      <label>Artist
+        <input type="text" name="artist" required maxlength="150">
+      </label>
+      <label>Cover image 
+        <input type="file" name="cover" accept="image/jpeg,image/png,image/webp">
+      </label>
+      <label>Audio track(s) 
+        <input type="file" name="tracks" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac">
+      </label>
+      <button type="submit">Upload </button>
+    </form>
+  </main>
+</body>
+</html>

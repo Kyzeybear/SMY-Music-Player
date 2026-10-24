@@ -4,6 +4,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+#view{
+    transform: scale(0.8) translateY(-30vh);
+}
+
 #Header1{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-left: 800px;
@@ -167,24 +171,25 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 .slideshow { 
 background-size: 100% 100%;
-height: 400px;
-width: 400px;
+height: 530px;
+width: 1000px;
 position: absolute;
-top: 100px;
-left:750px;
+top: 10px;
+left:700px;
 border-radius: 10px;
 
 animation-name: slider;
 animation-duration: 3s;
  animation: slider 30s linear infinite;
  animation-direction: alternate;
+ transform: scale(0.9);
  
 }
 
  @keyframes slider {
-0% {background-image: url(images/PYLON-123.webp)
+0% {background-image: url(images/BeaultimatePylon.webp)
 }
-100%{ background-image: url(images/PYLON-123.webp);
+100%{ background-image: url(images/BeaultimatePylon.webp);
 
 }
 
@@ -195,7 +200,7 @@ animation-duration: 3s;
 }
 
 .slideshow:hover{
-    opacity: 60%;
+    opacity: 80%;
 }
 
 #head1{ 
@@ -623,12 +628,13 @@ footer {
 .playButtonTop{
     height: 50px;
     width: 50px;
-    background-color: rgba(182, 105, 61, 0.205);
+    background-color: rgba(0, 0, 0, 0.979);
     border-color: rgba(240, 248, 255, 0);
     border-radius: 50%;
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 20px;
     color: rgb(248, 247, 248);
     display: none;
@@ -636,7 +642,14 @@ footer {
 
 .slideshow:hover .playButtonTop {
 display: inline;
+opacity: 100%;
 }
+
+.slideshow::before {
+  
+    
+}
+
 
 /* 
 This is for the media player
@@ -653,18 +666,18 @@ color: aliceblue;
     display: none;
     height: 70px;
     width:70px;
-    transform: translateX(-190px) translateY(120px);
+    transform: translateX(-190px) translateY(220px);
     font-size: 40px;
     font-family: "Archivo Black", sans-serif;
     z-index: 999;
 }
 .topImg:hover img {
-opacity: 0.5;
+opacity: 0.6;
 }
-
 .playButton:hover{
     display: inline;
 }
+
 .topImg img:hover + .playButton {
     display: inline;
 }
