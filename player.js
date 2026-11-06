@@ -35,91 +35,77 @@ const progress = document.querySelector('.progressBar');
 const songTitle = document.getElementById('songNameMedia');
 const playPauseButton = document.querySelector('.playButton2');
 const imgSrc = document.querySelector('.srcImg');
+const forwardButton = document.querySelector('.forwardButton')
+const backwardButton = document.querySelector('.backButton')
+const homeplayButton = document.querySelector('.playButtonTop')
 
 let currentPlaylist = BeabadoobeePylonAlbum;
 let currentIndex = 0;
 let savedTime = 0;
 
-function renderTrack() {
-    const song = currentPlaylist[currentIndex];
-    if (!song) return;
 
-    if (songTitle) songTitle.textContent = `${song.artist} - ${song.title}`;
-    if (imgSrc) imgSrc.style.backgroundImage = `url("${song.srcImg}")`;
-    if (progress) {
-        progress.value = 0;
-        progress.max = Number.isFinite(currentTrack.duration) ? currentTrack.duration : 0;
+function playSong (index = currentIndex, time = 0){
+    currentindex = ((index % currentPlaylist.length) + currentPlaylist.length) % currentTrack.length
+    currentTrack.src = currentPlaylist[currentIndex].src
+    currentTrack.currentTime = time
+    currentTrack.play()
+}
+
+function toogleTrack (){
+    
+    if (!currentTrack.src) return
+    else if (!currentTrack.paused) {
+        currentTrack.pause()
+        savedTime = currentTrack.currentTime
     }
-    if (playPauseButton) playPauseButton.textContent = '❚❚';
-    document.dispatchEvent(new CustomEvent('playertrackchange', {
-        detail: { song, index: currentIndex, playlist: currentPlaylist },
-    }));
-}
-
-function playTrack(index = currentIndex) {
-    if (!currentPlaylist.length) return;
-    currentIndex = ((index % currentPlaylist.length) + currentPlaylist.length) % currentPlaylist.length;
-    currentTrack.src = currentPlaylist[currentIndex].src;
-    savedTime = 0;
-    renderTrack();
-    currentTrack.play().catch((error) => console.error('Audio playback failed:', error));
-}
-
-function setPlaylist(playlist, { autoplay = false, index = 0 } = {}) {
-    if (!Array.isArray(playlist) || playlist.length === 0) return;
-    currentPlaylist = playlist;
-    currentIndex = 0;
-    savedTime = 0;
-    if (autoplay) playTrack(index);
-}
-
-function nextTrack() {
-    playTrack(currentIndex + 1);
-}
-
-function previousTrack() {
-    playTrack(currentIndex - 1);
-}
-
-function togglePlayback() {
-    if (!currentPlaylist[currentIndex]) return;
-    if (currentTrack.paused) {
-        if (!currentTrack.src) currentTrack.src = currentPlaylist[currentIndex].src;
-        currentTrack.currentTime = savedTime;
-        currentTrack.play().catch((error) => console.error('Audio playback failed:', error));
-    } else {
-        savedTime = currentTrack.currentTime;
-        currentTrack.pause();
+    else {
+        currentTrack.currentTime = savedTime
+        currentTrack.play()
+        .catch (error=> {
+            console.log("Playback Error")
+        })
     }
 }
 
-window.musicPlaylists = { oliviaDeanAlbum, beabadoobeePylonAlbum: BeabadoobeePylonAlbum };
-window.musicPlayer = { setPlaylist, playTrack, nextTrack, previousTrack, togglePlayback };
-
-document.querySelector('.playButtonTop')?.addEventListener('click', () => {
-    setPlaylist(BeabadoobeePylonAlbum);
-    playTrack(0);
-});
-playPauseButton?.addEventListener('click', togglePlayback);
-document.querySelector('.forwardButton')?.addEventListener('click', nextTrack);
-document.querySelector('.backButton')?.addEventListener('click', previousTrack);
-
-if (progress) {
-    progress.addEventListener('input', () => {
-        if (Number.isFinite(currentTrack.duration)) currentTrack.currentTime = Number(progress.value);
-    });
+function setPlaylist (playlist){
+currentPlaylist = playlist
 }
 
-currentTrack.addEventListener('loadedmetadata', () => {
-    if (progress) progress.max = Number.isFinite(currentTrack.duration) ? currentTrack.duration : 0;
-});
-currentTrack.addEventListener('timeupdate', () => {
-    if (progress && !progress.matches(':active')) progress.value = currentTrack.currentTime;
-});
-currentTrack.addEventListener('play', () => {
-    if (playPauseButton) playPauseButton.textContent = '❚❚';
-});
-currentTrack.addEventListener('pause', () => {
-    if (playPauseButton) playPauseButton.textContent = '▶︎';
-});
-currentTrack.addEventListener('ended', nextTrack);
+
+function renderTrack (){
+ songTitle.textContent = currentPlaylist[currentIndex].title + " - " + currentPlaylist[currentIndex].artist
+ imgSrc.style.backgroundImage = `url(${currentPlaylist[currentIndex].srcImg})`
+ setInterval(() => {
+    progress.value = currentTrack.currentTime
+ }, 1000);
+progress.onchange = ()=>{
+currentTrack.currentTime = progress.value
+}
+}
+
+playPauseButton.addEventListener('click', ()=>{
+    toogleTrack ()
+    renderTrack()
+})
+
+homeplayButton.addEventListener('click', ()=>{
+    playSong()
+    renderTrack()
+})
+
+currentTrack.addEventListener ('play', ()=>{
+    playPauseButton.textContent = '❚❚'
+})
+
+currentTrack.addEventListener ('pause', ()=>{
+    playPauseButton.textContent = '▶︎';
+})
+forwardButton.addEventListener('click', ()=>{
+    playSong(currentIndex += 1)
+    renderTrack()
+})
+
+backwardButton.addEventListener('click', ()=>{
+    playSong(currentIndex -= 1)
+    renderTrack()
+})
