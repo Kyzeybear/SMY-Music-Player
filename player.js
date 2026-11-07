@@ -45,10 +45,16 @@ let savedTime = 0;
 
 
 function playSong (index = currentIndex, time = 0){
-    currentindex = ((index % currentPlaylist.length) + currentPlaylist.length) % currentTrack.length
+    currentIndex = ((index % currentPlaylist.length) + currentPlaylist.length) % currentPlaylist.length
     currentTrack.src = currentPlaylist[currentIndex].src
     currentTrack.currentTime = time
+
     currentTrack.play()
+        .catch ((error) => {
+        console.error('problem')
+        console.log(currentIndex)
+
+    })
 }
 
 function toogleTrack (){
@@ -75,13 +81,23 @@ currentPlaylist = playlist
 function renderTrack (){
  songTitle.textContent = currentPlaylist[currentIndex].title + " - " + currentPlaylist[currentIndex].artist
  imgSrc.style.backgroundImage = `url(${currentPlaylist[currentIndex].srcImg})`
- setInterval(() => {
+ 
+ currentTrack.addEventListener('loadedmetadata', ()=>{
+progress.max = currentTrack.duration
+ }, {once: true})
+ 
+currentTrack.addEventListener('timeupdate', ()=> {
     progress.value = currentTrack.currentTime
- }, 1000);
+})
+
 progress.onchange = ()=>{
 currentTrack.currentTime = progress.value
 }
 }
+
+window.musicFunctions  = {renderTrack, setPlaylist, toogleTrack, playSong}
+window.songs = {BeabadoobeePylonAlbum, oliviaDeanAlbum, get currentIndex() { return currentIndex; }, get currentPlaylist() { return currentPlaylist; }}
+
 
 playPauseButton.addEventListener('click', ()=>{
     toogleTrack ()
@@ -89,7 +105,8 @@ playPauseButton.addEventListener('click', ()=>{
 })
 
 homeplayButton.addEventListener('click', ()=>{
-    playSong()
+    setPlaylist(BeabadoobeePylonAlbum)
+    playSong(0)
     renderTrack()
 })
 
@@ -103,9 +120,17 @@ currentTrack.addEventListener ('pause', ()=>{
 forwardButton.addEventListener('click', ()=>{
     playSong(currentIndex += 1)
     renderTrack()
+    window.deanFunctions.setRowchange()
 })
 
 backwardButton.addEventListener('click', ()=>{
     playSong(currentIndex -= 1)
     renderTrack()
+    window.deanFunctions.setRowchange()
+})
+
+currentTrack.addEventListener('ended', ()=> {
+    playSong(currentIndex += 1)
+    renderTrack()
+    window.deanFunctions.setRowchange()
 })
