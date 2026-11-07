@@ -18,7 +18,7 @@ window.musicFunctions.renderTrack()
 setRowchange()
 
 })
-backgroundBoxes.addEventListener ('click', (e)=> {
+backgroundBoxes.addEventListener ('click', (e) =>{
     setPlaylist(oliviaDeanAlbum)
     const boxClicked = e.target
     renderTrack()
@@ -26,8 +26,8 @@ backgroundBoxes.addEventListener ('click', (e)=> {
     setRowchange()
 })
 
-function setRowchange (currentIndex = window.songs.currentIndex){
-    rows.forEach ((element, index) =>{
+function setRowchange (currentIndex = window.songs.currentIndex) {
+    rows.forEach((element, index) => {
         if (index == currentIndex && currentPlaylist == oliviaDeanAlbum) element.style.backgroundColor = rowColor
         else element.style.backgroundColor = rowColorTrans
     })
